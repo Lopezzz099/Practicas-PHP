@@ -3,17 +3,18 @@
     $age = 21;
     $isDev = true;
 
-    echo gettype($name);
-    echo gettype($age);
-    echo gettype($isDev);
+    define('LOGO_PHP', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUXbDN6MjKqhEQLKobn2Ffg4goxiTe6xptfw&s');
+
+    const NOMBRE = 'Ignacio';
+
+    $output = "Hola $name";
+    $output .= ", tienes $age anios";
 ?>
 
+<img src="<?= LOGO_PHP; ?>" alt="Logo PHP">
 <h1>
     <?= 
-        "Hola " 
-        . $name 
-        . ",<br/> con una edad de " 
-        . $age;
+        $NOMBRE;
     ?>
 </h1>
 
