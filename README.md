@@ -150,4 +150,65 @@ Hay dos tipos de constantes:
                 NOMBRE;
             ?>
         </h1>
+    ```
+
+### IF en PHP
+En este caso seria el tipico if, asi:
+```php
+    $name = 'Ignacio';
+    $age = 21;
+    $isDev = true;
+
+    $isOld = $age > 40;
+
+    if ($isOld) {
+        echo "<h2>Eres mayor de edad</h2>";
+    } else if ($isDev){
+        echo "<h2>No eres viejo, eres Dev</h2>";
+    } else {
+        echo "<h2>Eres menor de edad</h2>";
+    }
 ```
+Lo interesante es que el "else if" se puede poner todo junto "elseif".
+
+### Sintaxis alternativa para trabajar con los IF
+Hay una sintaxis alternativa en php para trabajar con los if para que se utilice como un sistema de plantillas y seria basicamente con los dos puntos ( : ).
+```php
+    <?php if ($isOld) : ?>
+        <h2>Eres mayor de edad</h2>
+    <?php elseif ($isDev) : ?>
+        <h2>No eres viejo, eres Dev</h2>
+    <?php else : ?>
+        <h2>Eres menor de edad</h2>
+    <?php endif; ?>
+```
+Como veras, este sistema de plantillas es mucho mas facil porque podrias tener tanto html como quieras y necesites.
+Una cosa importante, es que en esta sintaxis no podes separar el "elseif" porque se rompe.
+
+## Ternarias
+```php
+    $outputAge = $isOld 
+        ? 'Mayor de edad' 
+        : 'Menor de edad';
+```
+
+### Match, mejor que Switch
+Una cosa interesante del match es que puedes hacerlo como una asignacion a una variable o sea que lo que va a ocurrir, dentro de un match, va a devolver un valor y ese valor lo guarda en una variable. Es una forma de hacer pattern matching, en el que el valor que se genera dentro de las condiciones es el que pasa dentro de la variable.
+```php
+    $outputAge = match ($age) {
+        0, 1, 2, => "Eres un bebe, $name",
+        3, 4, 5, 6, 7, 8, 9, 10, => "Eres un ninio, $name",
+        11, 12, 13, 14, 15, 16, 17, 18, 19, 20, => "Eres un adolescente, $name",
+        default => "Eres un adulto, $name",
+    }
+```
+Al poner tantos años, es algo incomodo pero la idea es que se entienda como funciona basicamente. Ahora lo que podriamos hacer es evaluar expresiones:
+```php
+    $outputAge = match (true) {
+        $age < 3    => "Eres un bebe, $name",
+        $age < 11   => "Eres un ninio, $name",
+        $age < 19   => "Eres un adolescente, $name",
+        default     => "Eres un adulto, $name",
+    }
+```
+Lo que va a comparar es si este "true" ocurre en la primera expresion ($age < 3) y sigue comparando hasta dar con alguno verdadero o hasta llegar al default.
