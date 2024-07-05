@@ -185,7 +185,7 @@ Hay una sintaxis alternativa en php para trabajar con los if para que se utilice
 Como veras, este sistema de plantillas es mucho mas facil porque podrias tener tanto html como quieras y necesites.
 Una cosa importante, es que en esta sintaxis no podes separar el "elseif" porque se rompe.
 
-## Ternarias
+### Ternarias
 ```php
     $outputAge = $isOld 
         ? 'Mayor de edad' 
@@ -212,3 +212,69 @@ Al poner tantos años, es algo incomodo pero la idea es que se entienda como fun
     }
 ```
 Lo que va a comparar es si este "true" ocurre en la primera expresion ($age < 3) y sigue comparando hasta dar con alguno verdadero o hasta llegar al default.
+
+### Arrays
+Se pueden crear de diferentes formas:
+```php
+    $bestLanguage = array('PHP', 'JavaScript', 'Python', 'Java');
+```
+```php
+    $bestFood = ["Pizza", "Hamburguesa", "Hot Dog"];
+```
+Lo que podes hacer en este lenguaje es que podes mezclar los tipos de datos en el array, lo cual en algunos lenguajes no se pueden.
+```php
+    $bestNumbers = [1, 2, 3, "Cuatro", "Cinco", "Seis"];
+```
+Tambien, pueden crecer de forma dinamica:
+```php
+    $bestFood[] = "Papas";
+```
+Esto lo que va a hacer, sin poner ninguna posicion en los [], es directamente lo va a pone al final. Si le pones el indice, va a remplazar el actual valor de dicha posicion por el valo nuevo.
+```php
+    $bestFood[1] = "Papas";
+```
+
+### Foreach()
+La forma de iterar los arrays es con Foreach().
+```php
+    <?php foreach () : ?>
+
+    <?php endforeach; ?>
+```
+Un ejemplo aplicado seria asi:
+```php
+    <ul>
+        <?php foreach ($bestLanguage as $language) : ?>
+            <li><?= $language; ?></li>
+        <?php endforeach; ?>
+    </ul>
+```
+
+### Índice del foreach
+Ahora para sacar el indice podemos poner "Key" mas "=>":
+```php
+    <ul>
+        <?php foreach ($bestLanguage as $key => $language) : ?>
+            <li><?= $key . " " . $language; ?></li>
+        <?php endforeach; ?>
+    </ul>
+```
+Lo que estamos haciendo es sacar de "$language" el indice.
+
+### Crear un diccionario
+Se los llaman arrays asociativos donde cada indice en realidad sea una cadena de texto y por lo tanto puedas crear como algo parecido a un objeto.
+```php
+    $person = [
+        'name' => 'Ignacio',
+        'age' => 21,
+        'isDev' => true,
+        'languages' => ['PHP', 'JavaScript', 'Python', 'Java'],
+    ]
+```
+En este caso tenemos la key 'name' y el valor 'Ignacio' asi es como estamos creando este enlace donde le estamos diciendo cual es la llave y cual es el valor. 
+Tambien se puede mutar:
+```php
+    $person['name'] = "Lopez";
+    $person['languages'][] = "C#";
+```
+## Una vez visto todo esto, empiezo con la primer aplicacion

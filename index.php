@@ -16,10 +16,40 @@
         $age < 11   => "Eres un ninio, $name",
         $age < 19   => "Eres un adolescente, $name",
         default     => "Eres un adulto, $name",
-    }
+    };
+
+    $bestLanguage = array('PHP', 'JavaScript', 'Python', 'Java');
+
+    $bestFood = ["Pizza", "Hamburguesa", "Hot Dog"];
+
+    $bestNumbers = [1, 2, 3, "Cuatro", "Cinco", "Seis"];
+
+    $bestFood[] = "Papas";
+
+    $bestFood[1] = "Pizzas";
+
+    $person = [
+        'name' => 'Ignacio',
+        'age' => 21,
+        'isDev' => true,
+        'languages' => ['PHP', 'JavaScript', 'Python', 'Java'],
+    ];
+
+    $person['name'] = "Lopez";
+    $person['languages'][] = "C#";
 ?>
 
+<ul>
+    <?php foreach ($bestLanguage as $key => $language) : ?>
+        <li><?= $key . " " . $language; ?></li>
+    <?php endforeach; ?>
+</ul>
+
 <h2><?= $outputAge; ?></h2>
+
+<h3>
+    El mejor lenguaje de programación es <?= $bestLanguage[0]; ?>
+</h3>
 
 <?php if ($isOld) : ?>
     <h2>Eres mayor de edad</h2>
