@@ -34,7 +34,6 @@ Es dinamico porque no es necesario declarar el tipo de la variable, puede cambia
 Es debil porque va a intentar cambiar los tipos automaticamente, por ejemplo: $newAge = 21 + '1'; esto va a dar 22.
 Pero si son dos cadenas de texto y lo queres concatenar, el simbolo '+' no sirve ya que tenemos que utilizar ' . ', por ejemplo: $newAge = '21'+ '1'; esto va a dar 22 y $newAge = '21' . '1'; esto va a dar 211. Lo mismo pasa al revez: $newAge = 21 . 1; esto va a dar 211.
 Es gradual porque podes indicar explicitamente los tipos de las variables, esto se aplica solo en funciones o en clases, no tiene un tipado completo para aplicarlo en cualquier parte. Pero no es algo obligatorio ya que es opcional.
-
 <?php
     $name = 'Ignacio';
     $age = 21;
@@ -43,6 +42,21 @@ Es gradual porque podes indicar explicitamente los tipos de las variables, esto 
     $newAge = $age + '1';
     $nameComplete = $name . ' ' . 'Lopez';
 ?>
+Para poner comentarios utilizariamos el #.
+<?php
+    # Esto es un comentaio.
+?>
+Tambien con //.
+<?php
+    // Esto tambien es un comentaio.
+?>
+Y con esto /**/.
+<?php
+    /* Ejecutar la peticion 
+    y guardar el resultado 
+    */ 
+?>
+
 ### Metodos para ver los tipos de datos
 El 'var_dump' te va a decir exactamente el tipo de datos y el valor del dato que tiene en ese momento una variable.
 ```php
@@ -67,7 +81,8 @@ Otros metodos para verificar el tipo de dato puede ser:
     is_bool($age);
     is_int($isDev);
 ```
-Estos te devuelven un true o false. 
+Estos te devuelven un true o false.
+
 ### El 'type-casting'
 Es un forzado de tipos, si por lo que sea quieres transformar un numero a un booleano lo puedes hacer con un prefijo asi: $age = (bool) 21; o sea se va a mostrar un 1 ya que eso seria el valor 'true' de un booleano.
 
@@ -277,4 +292,10 @@ Tambien se puede mutar:
     $person['name'] = "Lopez";
     $person['languages'][] = "C#";
 ```
-## Una vez visto todo esto, empiezo con la primer aplicacion
+## La primer aplicacion
+En esta aplicacion el objetivo es que nos dija cual es la proxima pelicula de marvel. Utilizando la API de [MCU-Countdown](https://github.com/DiljotSG/MCU-Countdown)
+
+### ¿Cómo llamar a una API?
+La forma mas cercana al lenguaje de php es utilizando curl.
+Si hacemos "curl https://www.whenisthenextmcufilm.com/api", nos tiraria la respuesta de la llamada. 
+Esto sin utilizar ninguna dependencia.
