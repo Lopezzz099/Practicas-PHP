@@ -4,11 +4,18 @@ Repositorio dedicado a prácticas de desarrollo en PHP, diseñado para explorar 
 
 Lo siguiente es el proceso en como fui aprendiendo PHP.
 
+### Como iniciar el servidor web:
+Inicia el servidor web embebido usando el comando php -S seguido de la dirección y el puerto en el que deseas que se ejecute el servidor. Por ejemplo:
+```sh
+    php -S localhost:8000
+```
+
 ### Alternativa a php echo:
 ```php
     <?php echo 'Mi primea app'; ?>
     <?= 'Mi primea app'; ?>
 ```
+
 ### ¿Cómo crear variables en PHP y restricciones?
 Con el signo de '$' es como estamos identificando las variables y luego al lado va el nombre de la variable.
 ```php
@@ -28,6 +35,7 @@ Tambien se pueden asignar variables a otras con condiciones.
         $isOld = !$isDev && $age > 40;
     ?>
 ```
+
 ### Que es PHP?
 Es un lenguaje de tipado dinamico, debil y gradual.
 Es dinamico porque no es necesario declarar el tipo de la variable, puede cambiar en tiempo de ejecucion.
@@ -299,3 +307,43 @@ En esta aplicacion el objetivo es que nos dija cual es la proxima pelicula de ma
 La forma mas cercana al lenguaje de php es utilizando curl.
 Si hacemos "curl https://www.whenisthenextmcufilm.com/api", nos tiraria la respuesta de la llamada. 
 Esto sin utilizar ninguna dependencia.
+```php
+    const API_URL = 'https://www.whenisthenextmcufilm.com/api';
+    // Inicializar una nueva sesión de cURL; ch = cURL handle
+    $ch = curl_init(API_URL);
+    // Indicar que queremos recibir el resultado de la petición y no mostrarla en pantalla
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    /* Ejecutar la petición 
+    y guardar el resultado 
+    */ 
+    $result = curl_exec($ch);
+    $data = json_decode($result, true);
+
+    // Cerrar la sesion de cURL
+    curl_close($ch);
+```
+
+### Agregando Pico (framwork de CSS)
+Utilizo este framwork para que los estilos se vean bien.
+Pico CSS es un framwork CSS que funciona con o sin clases dependiendo la version, que solo te va a estilar directamente el HTML. 
+
+### 2da Forma de llamar a una API
+Una alternativa seria utiliza file_get_contents, es una forma de directamente de llamar a la API hacer un get y quedarte con el JSON o sea ya tendrias el resultado de una mucho mas facil. A comparacion con la anterior forma, es que te permite hacer get, post, put y todo lo que quieras, ver mucho mas facil tambien los status code pero la mas si solo quieres hacer un get de una API es de esta forma.
+
+```php
+    const API_URL = 'https://www.whenisthenextmcufilm.com/api';
+    // Inicializar una nueva sesión de cURL; ch = cURL handle
+    $ch = curl_init(API_URL);
+    // Indicar que queremos recibir el resultado de la petición y no mostrarla en pantalla
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    /* Ejecutar la petición 
+    y guardar el resultado 
+    */ 
+    $result = file_get_contents(API_URL)
+
+    // Cerrar la sesion de cURL
+    curl_close($ch);
+```
+
+### ¿Como hacer un deploy?
+Una forma paa desplegar un proyecto de php facil, rapido y barato (porque no hay que poner un peso) es utilizando Zeabur.
