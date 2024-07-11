@@ -2,7 +2,7 @@
 
 Repositorio dedicado a prácticas de desarrollo en PHP, diseñado para explorar y aprender conceptos clave de este lenguaje de programación. Incluye ejercicios, proyectos y recursos útiles para mejorar habilidades en la creación de aplicaciones web dinámicas utilizando PHP.
 
-Lo siguiente es el proceso en como fui aprendiendo PHP.
+Lo siguiente es el proceso en cómo fui aprendiendo PHP.
 
 ### Como iniciar el servidor web:
 Inicia el servidor web embebido usando el comando php -S seguido de la dirección y el puerto en el que deseas que se ejecute el servidor. Por ejemplo:
@@ -25,7 +25,7 @@ Con el signo de '$' es como estamos identificando las variables y luego al lado 
         $isDev = true;
     ?>
 ```
-Tambien se pueden asignar variables a otras con condiciones.
+También se pueden asignar variables a otras con condiciones.
 ```php
     <?php
         $name = 'Ignacio';
@@ -36,12 +36,9 @@ Tambien se pueden asignar variables a otras con condiciones.
     ?>
 ```
 
-### Que es PHP?
-Es un lenguaje de tipado dinamico, debil y gradual.
-Es dinamico porque no es necesario declarar el tipo de la variable, puede cambiar en tiempo de ejecucion.
-Es debil porque va a intentar cambiar los tipos automaticamente, por ejemplo: $newAge = 21 + '1'; esto va a dar 22.
-Pero si son dos cadenas de texto y lo queres concatenar, el simbolo '+' no sirve ya que tenemos que utilizar ' . ', por ejemplo: $newAge = '21'+ '1'; esto va a dar 22 y $newAge = '21' . '1'; esto va a dar 211. Lo mismo pasa al revez: $newAge = 21 . 1; esto va a dar 211.
-Es gradual porque podes indicar explicitamente los tipos de las variables, esto se aplica solo en funciones o en clases, no tiene un tipado completo para aplicarlo en cualquier parte. Pero no es algo obligatorio ya que es opcional.
+### ¿Qué es PHP?
+Es un lenguaje de tipado dinámico, débil y gradual. Es dinámico porque no es necesario declarar el tipo de la variable, puede cambiar en tiempo de ejecución. Es débil porque va a intentar cambiar los tipos automáticamente, por ejemplo: $newAge = 21 + '1'; esto va a dar 22. Pero si son dos cadenas de texto y lo quieres concatenar, el símbolo '+' no sirve ya que tenemos que utilizar ' . ', por ejemplo: $newAge = '21' + '1'; esto va a dar 22 y $newAge = '21' . '1'; esto va a dar 211. Lo mismo pasa al revés: $newAge = 21 . 1; esto va a dar 211. Es gradual porque puedes indicar explícitamente los tipos de las variables, esto se aplica solo en funciones o en clases, no tiene un tipado completo para aplicarlo en cualquier parte. Pero no es algo obligatorio ya que es opcional.
+```php
 <?php
     $name = 'Ignacio';
     $age = 21;
@@ -50,30 +47,37 @@ Es gradual porque podes indicar explicitamente los tipos de las variables, esto 
     $newAge = $age + '1';
     $nameComplete = $name . ' ' . 'Lopez';
 ?>
-Para poner comentarios utilizariamos el #.
+```
+Para poner comentarios utilizaríamos el #.
+```php
 <?php
     # Esto es un comentaio.
 ?>
-Tambien con //.
+```
+También con //.
+```php
 <?php
     // Esto tambien es un comentaio.
 ?>
+```
 Y con esto /**/.
+```php
 <?php
     /* Ejecutar la peticion 
     y guardar el resultado 
     */ 
 ?>
+```
 
-### Metodos para ver los tipos de datos
+### Métodos para ver los tipos de datos
 El 'var_dump' te va a decir exactamente el tipo de datos y el valor del dato que tiene en ese momento una variable.
 ```php
     var_dump($name);
     var_dump($age);
     var_dump($isDev);
 ```
-Como se visualiza: string(7) "Ignacio" int(21) bool(true)
-IMPORTANTE: Esto se puede visualizar en produccion o sea si hay un error, un atacante lo puede utilizar en tu contra. Entonces una vez terminado quitar los var_dump.
+Cómo se visualiza: string(7) "Ignacio" int(21) bool(true)
+IMPORTANTE: Esto se puede visualizar en producción o sea si hay un error, un atacante lo puede utilizar en tu contra. Entonces una vez terminado quitar los 'var_dump'.
 
 Otro importante es el 'gettype', directamente lo que te dice es el tipo de dato.
 ```php
@@ -81,9 +85,9 @@ Otro importante es el 'gettype', directamente lo que te dice es el tipo de dato.
     echo gettype($age);
     echo gettype($isDev);
 ```
-Como se visualiza: stringintegerboolean
+Cómo se visualiza: stringintegerboolean
 
-Otros metodos para verificar el tipo de dato puede ser: 
+Otros métodos para verificar el tipo de dato pueden ser:
 ```php
     is_string($name);
     is_bool($age);
@@ -92,7 +96,7 @@ Otros metodos para verificar el tipo de dato puede ser:
 Estos te devuelven un true o false.
 
 ### El 'type-casting'
-Es un forzado de tipos, si por lo que sea quieres transformar un numero a un booleano lo puedes hacer con un prefijo asi: $age = (bool) 21; o sea se va a mostrar un 1 ya que eso seria el valor 'true' de un booleano.
+Es un forzado de tipos, si por lo que sea quieres transformar un número a un booleano lo puedes hacer con un prefijo así: $age = (bool) 21; o sea se va a mostrar un 1 ya que eso sería el valor 'true' de un booleano.
 
 ---
 
@@ -107,7 +111,7 @@ Es un forzado de tipos, si por lo que sea quieres transformar un numero a un boo
 
 ---
 
-### Interpolacion de cadenas
+### Interpolación de cadenas
 Si queremos evaluar las variables dentro de una cadena de texto entonces tenemos que utilizar " ". 
 Por ejemplo si tenemos el output:
 ```php
@@ -119,7 +123,7 @@ Por ejemplo si tenemos el output:
         $output = "Hola $name, con una edad de $age";
     ?>
 ```
-Eso en la salida se mostraria asi: Hola Ignacio, con una edad de 21.
+Eso en la salida se mostraría así: Hola Ignacio, con una edad de 21.
 Pero si tenemos esto:
 ```php
     <?php
@@ -130,32 +134,32 @@ Pero si tenemos esto:
         $output = 'Hola $name, con una edad de $age';
     ?>
 ```
-Lo va a tomar como si fuera todo un texto, se mostraria asi:  Hola $name, con una edad de $age.
-Tambien si queremos concatenar, se puede hacer un " .=  " asi: 
+Lo va a tomar como si fuera todo un texto, se mostraría así: Hola $name, con una edad de $age.
+También si queremos concatenar, se puede hacer un " .= " así:
 ```php
     $output  .=  ", tienes $age anios"; 
 ```
-Ahora como ignoramos los signos? 
-Con esto " \ " , asi: 
+Ahora ¿Cómo ignoramos los signos?
+Con esto " \ " , así: 
 ```php
     $output = "Hola \$name, con una edad de \$age"; 
 ```
-Entonces lo mostraria como un caracter: Hola $name, con una edad de $age. 
-Otro ejemplo: 
+Entonces lo mostraría como un carácter: Hola $name, con una edad de $age.
+Otro ejemplo:
 ```php
     $output = "Hola \"$name\", con una edad de \"$age\" "; 
 ```
-Se mostraria asi: Hola "Ignacio", con una edad de "21".
+Se mostraría así: Hola "Ignacio", con una edad de "21".
 
 ### Constantes
 Hay dos tipos de constantes:
-- Las globales, son las que se definen con el metodo "define", por ejemplo asi: 
+- Las globales, son las que se definen con el método 'define', por ejemplo así:
     ```php
         define('NAME', 'Ignacio'); 
     ```
-    O sea que en cualquier lugar de nuestra aplicacion vamos a poder utilizarla, obviamente si la intentamos llamar dos veces, nos tirara un warning. 
-    RECOMENDACION: Hacer un archivo de solamente de constantes para que no haya problemas y siempre ponerlas en mayusculas.
-- Las locales, serian a nivel de clases o a nivel de donde estamos tabajando. En este caso se definen con el metodo "const", por ejemplo asi: 
+    O sea que en cualquier lugar de nuestra aplicación vamos a poder utilizarla, obviamente si la intentamos llamar dos veces, nos tirará un warning.
+    RECOMENDACIÓN: Hacer un archivo solamente de constantes para que no haya problemas y siempre ponerlas en mayúsculas.
+- Las locales, serían a nivel de clases o a nivel de donde estamos trabajando. En este caso se definen con el método 'const', por ejemplo así:
     ```php
         const NOMBRE = "Ignacio";
     ```
@@ -176,7 +180,7 @@ Hay dos tipos de constantes:
     ```
 
 ### IF en PHP
-En este caso seria el tipico if, asi:
+En este caso sería el típico if, así:
 ```php
     $name = 'Ignacio';
     $age = 21;
@@ -195,7 +199,7 @@ En este caso seria el tipico if, asi:
 Lo interesante es que el "else if" se puede poner todo junto "elseif".
 
 ### Sintaxis alternativa para trabajar con los IF
-Hay una sintaxis alternativa en php para trabajar con los if para que se utilice como un sistema de plantillas y seria basicamente con los dos puntos ( : ).
+Hay una sintaxis alternativa en PHP para trabajar con los if para que se utilice como un sistema de plantillas y sería básicamente con los dos puntos ( : ).
 ```php
     <?php if ($isOld) : ?>
         <h2>Eres mayor de edad</h2>
@@ -205,7 +209,7 @@ Hay una sintaxis alternativa en php para trabajar con los if para que se utilice
         <h2>Eres menor de edad</h2>
     <?php endif; ?>
 ```
-Como veras, este sistema de plantillas es mucho mas facil porque podrias tener tanto html como quieras y necesites.
+Como verás, este sistema de plantillas es mucho más fácil porque podrías tener tanto HTML como quieras y necesites.
 Una cosa importante, es que en esta sintaxis no podes separar el "elseif" porque se rompe.
 
 ### Ternarias
@@ -216,7 +220,7 @@ Una cosa importante, es que en esta sintaxis no podes separar el "elseif" porque
 ```
 
 ### Match, mejor que Switch
-Una cosa interesante del match es que puedes hacerlo como una asignacion a una variable o sea que lo que va a ocurrir, dentro de un match, va a devolver un valor y ese valor lo guarda en una variable. Es una forma de hacer pattern matching, en el que el valor que se genera dentro de las condiciones es el que pasa dentro de la variable.
+Una cosa interesante del match es que puedes hacerlo como una asignación a una variable o sea que lo que va a ocurrir, dentro de un match, va a devolver un valor y ese valor lo guarda en una variable. Es una forma de hacer pattern matching, en el que el valor que se genera dentro de las condiciones es el que pasa dentro de la variable.
 ```php
     $outputAge = match ($age) {
         0, 1, 2, => "Eres un bebe, $name",
@@ -225,7 +229,7 @@ Una cosa interesante del match es que puedes hacerlo como una asignacion a una v
         default => "Eres un adulto, $name",
     }
 ```
-Al poner tantos años, es algo incomodo pero la idea es que se entienda como funciona basicamente. Ahora lo que podriamos hacer es evaluar expresiones:
+Al poner tantos años, es algo incómodo, pero la idea es que se entienda cómo funciona básicamente. Ahora lo que podríamos hacer es evaluar expresiones:
 ```php
     $outputAge = match (true) {
         $age < 3    => "Eres un bebe, $name",
@@ -234,7 +238,7 @@ Al poner tantos años, es algo incomodo pero la idea es que se entienda como fun
         default     => "Eres un adulto, $name",
     }
 ```
-Lo que va a comparar es si este "true" ocurre en la primera expresion ($age < 3) y sigue comparando hasta dar con alguno verdadero o hasta llegar al default.
+Lo que va a comparar es si este "true" ocurre en la primera expresión ($age < 3) y sigue comparando hasta dar con alguna verdadera o hasta llegar al default.
 
 ### Arrays
 Se pueden crear de diferentes formas:
@@ -244,15 +248,15 @@ Se pueden crear de diferentes formas:
 ```php
     $bestFood = ["Pizza", "Hamburguesa", "Hot Dog"];
 ```
-Lo que podes hacer en este lenguaje es que podes mezclar los tipos de datos en el array, lo cual en algunos lenguajes no se pueden.
+Lo que podés hacer en este lenguaje es que podés mezclar los tipos de datos en el array, lo cual en algunos lenguajes no se puede.
 ```php
     $bestNumbers = [1, 2, 3, "Cuatro", "Cinco", "Seis"];
 ```
-Tambien, pueden crecer de forma dinamica:
+También, pueden crecer de forma dinámica:
 ```php
     $bestFood[] = "Papas";
 ```
-Esto lo que va a hacer, sin poner ninguna posicion en los [], es directamente lo va a pone al final. Si le pones el indice, va a remplazar el actual valor de dicha posicion por el valo nuevo.
+Esto lo que va a hacer, sin poner ninguna posición en los [], es directamente lo va a poner al final. Si le ponés el índice, va a reemplazar el actual valor de dicha posición por el valor nuevo.
 ```php
     $bestFood[1] = "Papas";
 ```
@@ -264,7 +268,7 @@ La forma de iterar los arrays es con Foreach().
 
     <?php endforeach; ?>
 ```
-Un ejemplo aplicado seria asi:
+Un ejemplo aplicado sería así:
 ```php
     <ul>
         <?php foreach ($bestLanguage as $language) : ?>
@@ -274,7 +278,7 @@ Un ejemplo aplicado seria asi:
 ```
 
 ### Índice del foreach
-Ahora para sacar el indice podemos poner "Key" mas "=>":
+Ahora para sacar el índice podemos poner "Key" más "=>":
 ```php
     <ul>
         <?php foreach ($bestLanguage as $key => $language) : ?>
@@ -282,10 +286,10 @@ Ahora para sacar el indice podemos poner "Key" mas "=>":
         <?php endforeach; ?>
     </ul>
 ```
-Lo que estamos haciendo es sacar de "$language" el indice.
+Lo que estamos haciendo es sacar de "$language" el índice.
 
 ### Crear un diccionario
-Se los llaman arrays asociativos donde cada indice en realidad sea una cadena de texto y por lo tanto puedas crear como algo parecido a un objeto.
+Se los llama arrays asociativos donde cada índice en realidad sea una cadena de texto y por lo tanto puedas crear algo parecido a un objeto.
 ```php
     $person = [
         'name' => 'Ignacio',
@@ -294,18 +298,18 @@ Se los llaman arrays asociativos donde cada indice en realidad sea una cadena de
         'languages' => ['PHP', 'JavaScript', 'Python', 'Java'],
     ]
 ```
-En este caso tenemos la key 'name' y el valor 'Ignacio' asi es como estamos creando este enlace donde le estamos diciendo cual es la llave y cual es el valor. 
-Tambien se puede mutar:
+En este caso tenemos la key 'name' y el valor 'Ignacio'. Así es como estamos creando este enlace donde le estamos diciendo cuál es la llave y cuál es el valor.
+También se puede mutar:
 ```php
     $person['name'] = "Lopez";
     $person['languages'][] = "C#";
 ```
-## La primer aplicacion
-En esta aplicacion el objetivo es que nos dija cual es la proxima pelicula de marvel. Utilizando la API de [MCU-Countdown](https://github.com/DiljotSG/MCU-Countdown)
+## La primer aplicación
+En esta aplicación el objetivo es que nos diga cuál es la próxima película de Marvel. Utilizando la API de [MCU-Countdown](https://github.com/DiljotSG/MCU-Countdown)
 
 ### ¿Cómo llamar a una API?
-La forma mas cercana al lenguaje de php es utilizando curl.
-Si hacemos "curl https://www.whenisthenextmcufilm.com/api", nos tiraria la respuesta de la llamada. 
+La forma más cercana al lenguaje de PHP es utilizando cURL.
+Si hacemos "curl https://www.whenisthenextmcufilm.com/api", nos daría la respuesta de la llamada.
 Esto sin utilizar ninguna dependencia.
 ```php
     const API_URL = 'https://www.whenisthenextmcufilm.com/api';
@@ -324,11 +328,11 @@ Esto sin utilizar ninguna dependencia.
 ```
 
 ### Agregando Pico (framwork de CSS)
-Utilizo este framwork para que los estilos se vean bien.
-Pico CSS es un framwork CSS que funciona con o sin clases dependiendo la version, que solo te va a estilar directamente el HTML. 
+Utilizo este framework para que los estilos se vean bien.
+Pico CSS es un framework CSS que funciona con o sin clases dependiendo de la versión, que solo te va a estilizar directamente el HTML.
 
 ### 2da Forma de llamar a una API
-Una alternativa seria utiliza file_get_contents, es una forma de directamente de llamar a la API hacer un get y quedarte con el JSON o sea ya tendrias el resultado de una mucho mas facil. A comparacion con la anterior forma, es que te permite hacer get, post, put y todo lo que quieras, ver mucho mas facil tambien los status code pero la mas si solo quieres hacer un get de una API es de esta forma.
+Una alternativa sería utilizar file_get_contents, es una forma de directamente llamar a la API, hacer un GET y quedarse con el JSON, o sea ya tendrías el resultado de una manera mucho más fácil. A comparación con la anterior forma, es que te permite hacer GET, POST, PUT y todo lo que quieras, ver mucho más fácil también los status code pero si solo querés hacer un GET de una API, esta es la forma.
 
 ```php
     const API_URL = 'https://www.whenisthenextmcufilm.com/api';
@@ -345,5 +349,5 @@ Una alternativa seria utiliza file_get_contents, es una forma de directamente de
     curl_close($ch);
 ```
 
-### ¿Como hacer un deploy?
-Una forma paa desplegar un proyecto de php facil, rapido y barato (porque no hay que poner un peso) es utilizando Zeabur.
+### ¿Cómo hacer un deploy?
+Una forma para desplegar un proyecto de PHP fácil, rápido y barato (porque no hay que poner un peso) es utilizando Zeabur.
